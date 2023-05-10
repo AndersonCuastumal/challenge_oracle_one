@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Challenge Oracle One</title>
     <LINK REL=StyleSheet HREF="./templates/css/style.css" TYPE="text/css" MEDIA=screen>
+    
 </head>
 <body>
     <header>
@@ -16,7 +17,7 @@
         <div class="all-sections">
             <section class="input-text" >
                 <article class="codificar-decodificar" >
-                    <textarea readonly id="input-text" class="textbox" placeholder="Ingresar el texto aquí" ></textarea>
+                    <textarea id="input-text" class="textbox" placeholder="Ingresar el texto aquí" ></textarea>
                     <div class="reglas-text">
                         <img src="./templates/images/bi_exclamation-circle-fill.png" >
                         <p >Solo letras minúsculas y sin acentos</p>
@@ -29,18 +30,23 @@
                 </article>
             </section>
             <section class="show-text" >
-                
-                <p class="result-text"></p>
-                <p class="action-text">Ingresar el texto que desees encriptar o desencriptar</p>
-            
+                <div class="show-text-imprimir"> 
+                    <img class="show-text-muneco" src="./templates/images/Muñeco.png">
+                    <span class="result-text">Ningún mensaje fue encontrado</span>
+                    <span class="action-text">Ingresar el texto que desees encriptar o desencriptar</span>
+                </div>
+                <div class="show-text-btn">    
+                    <button class="copy-text">Copiar</button>
+                </div>
+   
             </section>
         </div>
     </main>
     
     <footer>
-    
+        
     </footer>
-    
+    <script src="./templates/js/script.js"></script>
 </body>
 
 </html>
