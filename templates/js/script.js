@@ -1,6 +1,6 @@
 var msgOriginal=document.querySelector("textarea#input-text");
-var msgResultado=document.querySelector("span.action-text");
-var msgModificado="";
+var msgResultado=document.querySelector("div.show-text-msg>span");
+
 
 var btnEncriptar=document.querySelector("button#codificar");
 var btnDesencriptar=document.querySelector("button#decodificar");
@@ -9,6 +9,7 @@ var btnCopyText=document.querySelector("button.copy-text");
 
 
 btnCopyText.style.display="none";
+document.querySelector("div.show-text-msg").style.display="none";
 
 
 btnEncriptar.onclick=encriptar;
@@ -20,33 +21,42 @@ btnCopyText.onclick=copiaTexto;
 
 function encriptar(){
     var paragraph=msgOriginal.value.trim();
-    if(paragraph!=null || paragraph!=undefined || paragraph!=""){
+    var msgModificado="";
+    if(paragraph!=""){
         msgModificado=replaceVowelsAscendent(paragraph)
         cleanSection();
-        mostrarMensaje("span.action-text",msgModificado);
-        alert(msgModificado);
-        console.log(paragraph)
-        btnCopyText.style.display = "block";
-        
+        mostrarMensaje("div.show-text-msg>span",msgModificado);
+        //alert(msgModificado);
+        console.log("MSG Original: "+paragraph)
+        console.log("MSG Encriptado: "+msgModificado)
+               
 
     }else{
-        alert("There is not msg for encoding");
+        // Agregar MSG alert vacio en DOM
+        showEmptySection();
+        
+        alert("Ingresar texto a Encriptar, por favor!");
     }
 }
 
 function desencriptar(){
     var paragraph=msgOriginal.value.trim();
-    if(paragraph!=null || paragraph!=undefined || paragraph!=""){
+    var msgModificado="";
+    if(paragraph!=""){
         msgModificado=replaceVowelsDesendent(paragraph)
         cleanSection();
-        mostrarMensaje("span.action-text",msgModificado);
-        alert(msgModificado);
-        console.log(paragraph);
-        btnCopyText.style.display = "block";
-        
+        mostrarMensaje("div.show-text-msg>span",msgModificado);
+        //alert(msgModificado);
+        console.log("MSG Original: "+paragraph)
+        console.log("MSG Desencriptado: "+msgModificado)
+               
 
     }else{
-        alert("There is not msg for encoding");
+
+        // Agregar MSG alert vacio en DOM
+        showEmptySection();
+        
+        alert("Ingresar texto a Desencriptar, por favor!");
     }
 }
 
@@ -104,21 +114,39 @@ function copiaTexto(){
     document.body.removeChild(tempInput);
 
     // Mostrar mensaje de éxito
-    alert("Texto copiado al portapapeles");
+    alert("¡Texto copiado!");
 }
 
 
 
 function cleanSection(){
     
-    var elementosArray =[".show-text-muneco",".result-text"];
+    var elementosArray =[".show-text-muneco",".result-text",".action-text","div.show-text-imprimir"];
 
     // Iterar sobre los elementos y eliminarlos uno por uno
     elementosArray.forEach(function(elemento) {
         if(document.querySelector(elemento)){
-            document.querySelector(elemento).remove();
+            document.querySelector(elemento).style.display="none";
         }
         
     });
+    btnCopyText.style.display = "block";
+    document.querySelector("div.show-text-msg").style.display="block";
+}
+
+function showEmptySection(){
+    
+    var elementosArray =[".show-text-muneco",".result-text",".action-text","div.show-text-imprimir"];
+
+    // Iterar sobre los elementos y eliminarlos uno por uno
+    elementosArray.forEach(function(elemento) {
+        if(document.querySelector(elemento)){
+            document.querySelector(elemento).style.display = "block";
+        }
+        
+    });
+    btnCopyText.style.display = "none";
+    document.querySelector("div.show-text-msg").style.display="none";
+
 }
 
