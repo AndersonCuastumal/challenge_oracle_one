@@ -20,12 +20,13 @@ btnCopyText.onclick=copiaTexto;
 
 
 function encriptar(){
-    var paragraph=msgOriginal.value.trim();
+    var paragraph=msgOriginal.value.toLowerCase().trim();
     var msgModificado="";
     if(paragraph!=""){
         msgModificado=replaceVowelsAscendent(paragraph)
         cleanSection();
         mostrarMensaje("div.show-text-msg>span",msgModificado);
+        msgOriginal.value="";
         //alert(msgModificado);
         console.log("MSG Original: "+paragraph)
         console.log("MSG Encriptado: "+msgModificado)
@@ -40,12 +41,13 @@ function encriptar(){
 }
 
 function desencriptar(){
-    var paragraph=msgOriginal.value.trim();
+    var paragraph=msgOriginal.value.toLowerCase().trim();
     var msgModificado="";
     if(paragraph!=""){
         msgModificado=replaceVowelsDesendent(paragraph)
         cleanSection();
         mostrarMensaje("div.show-text-msg>span",msgModificado);
+        msgOriginal.value="";
         //alert(msgModificado);
         console.log("MSG Original: "+paragraph)
         console.log("MSG Desencriptado: "+msgModificado)
@@ -113,8 +115,9 @@ function copiaTexto(){
     // Eliminar el campo temporal del DOM
     document.body.removeChild(tempInput);
 
+    msgResultado.textContent="";
     // Mostrar mensaje de éxito
-    alert("¡Texto copiado!");
+    //alert("¡Texto copiado!");
 }
 
 
